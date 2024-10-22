@@ -1,0 +1,21 @@
+def findDuplicates(arr):
+    count = {}
+    result = []
+
+    for num in arr:
+        if num in count:
+            count[num] += 1
+        else:
+            count[num] = 1
+
+    for num, freq in count.items():
+        if freq > 1:
+            result.append(num)
+    
+    return sorted(result)
+
+n = int(input("Enter the size of the array: "))
+arr = list(map(int, input("Enter the array elements: ").split()))
+
+duplicates = findDuplicates(arr)
+print(f"Duplicate elements: {duplicates}")

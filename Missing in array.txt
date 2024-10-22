@@ -1,0 +1,11 @@
+def findMissingNumber(arr, n):
+    total_sum = n * (n + 1) // 2
+    arr_sum = sum(arr)
+    missing = total_sum - arr_sum
+    return missing
+
+n = int(input("Enter the total number n: "))
+arr = list(map(int, input(f"Enter {n-1} elements (1 to {n} with one missing): ").split()))
+
+missing_number = findMissingNumber(arr, n)
+print(f"Missing number: {missing_number}")

@@ -1,0 +1,21 @@
+def findSubarrayWithTargetSum(arr, target):
+    current_sum = 0
+    start = 0
+    
+    for i in range(len(arr)):
+        current_sum += arr[i]
+        
+        while current_sum > target and start <= i:
+            current_sum -= arr[start]
+            start += 1
+            
+        if current_sum == target:
+            return [start + 1, i + 1]  
+    
+    return -1
+
+n = int(input("Enter the size of the array: "))
+arr = list(map(int, input("Enter the array elements: ").split()))
+target = int(input("Enter the target sum: "))
+result = findSubarrayWithTargetSum(arr, target)
+print(f"Subarray indices: {result}")

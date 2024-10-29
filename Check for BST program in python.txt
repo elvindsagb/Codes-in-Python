@@ -1,0 +1,158 @@
+CHECK FOR BST
+3)Given the root of a binary tree. Check whether it is a BST or not.
+Note: We are considering that BSTs can not contain duplicate Nodes.
+A BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's key.
+The right subtree of a node contains only nodes with keys greater than the node's key.
+Both the left and right subtrees must also be binary search trees.
+Examples:
+
+Input:
+   2
+ /    \
+1      3
+        \
+         5
+Output: true 
+Explanation: 
+The left subtree of every node contains smaller keys and right subtree of every node contains greater. Hence, the tree is a BST.
+Input:
+  2
+   \
+    7
+     \
+      6
+       \
+        9
+Output: false 
+Explanation: 
+Since the node with value 7 has right subtree nodes with keys less than 7, this is not a BST. 
+Input:
+   10
+ /    \
+5      20
+      /   \
+     9     25
+Output: false
+Explanation: The node is present in the right subtree of 10, but it is smaller than 10.
+Expected Time Complexity: O(n) 
+Expected Auxiliary Space: O(Height of the tree)
+where n is the number of nodes in the given tree
+
+Constraints:
+1 ≤ Number of nodes ≤ 105
+1 ≤ Data of a node ≤ 105
+
+
+
+
+PROGRAM:-
+# Definition of a tree node
+class Node:
+    def __init__(self, key):
+        self.data = key
+        self.left = None
+        self.right = None
+
+# Function to insert nodes in the binary tree
+def insertNode(root, key):
+    if root is None:
+        return Node(key)
+    
+    # Insert in the left subtree if the key is less than root's key
+    if key < root.data:
+        root.left = insertNode(root.left, key)
+    # Insert in the right subtree if the key is greater than root's key
+    elif key > root.data:
+        root.right = insertNode(root.right, key)
+    
+    return root
+
+# Function to check if the tree is a BST
+def isBSTUtil(node, min_val, max_val):
+    # An empty tree is a BST
+    if node is None:
+        return True
+    
+    # If the node's value violates the min/max constraint, return False
+    if node.data <= min_val or node.data >= max_val:
+        return False
+    
+    # Recursively check the left and right subtrees
+    return (isBSTUtil(node.left, min_val, node.data) and
+            isBSTUtil(node.right, node.data, max_val))
+
+# Wrapper function to call the utility function with initial range
+def isBST(root):
+    return isBSTUtil(root, float('-inf'), float('inf'))
+
+# Function to get user input and build the tree
+def buildTree():
+    n = int(input("Enter the number of nodes in the tree: "))
+    
+    if n == 0:
+        print("The tree is empty.")
+        return None
+    
+    # Insert the first node (root)
+    root_val = int(input("Enter the value of the root: "))
+    root = Node(root_val)
+    
+    # Insert other nodes
+    for _ in range(n - 1):
+        node_val = int(input("Enter the value of the node to insert: "))
+        root = insertNode(root, node_val)
+    
+    return root
+
+# Main function to get user input and check if the tree is a BST
+def main():
+    root = buildTree()
+    if root:
+        if isBST(root):
+            print("The tree is a BST.")
+        else:
+            print("The tree is NOT a BST.")
+
+# Run the program
+main()
+
+
+EXPLANATION:-
+Input:
+
+The user first inputs the number of nodes they want to insert into the tree.
+The user inputs the values of the nodes one by one. The first input is treated as the root of the tree, and subsequent inputs are inserted into the tree based on BST insertion rules.
+Insert Function (insertNode):
+
+This function inserts nodes into the tree according to the BST properties:
+If the input value is less than the current node's value, it goes to the left subtree.
+If the input value is greater, it goes to the right subtree.
+Checking if the Tree is a BST (isBST):
+
+Once the tree is built, the program checks if it satisfies the BST properties using the isBSTUtil function.
+isBSTUtil(node, min_val, max_val):
+
+This function recursively checks whether the current node's value is within the valid range defined by min_val and max_val.
+The valid range for the left child of a node is updated to be between min_val and the current node's value.
+The valid range for the right child of a node is updated to be between the current node's value and max_val.
+If the node's value falls outside of the valid range, the function returns False.
+isBST(root):
+
+This function initializes the process by calling isBSTUtil with the root node and the range (-∞, ∞).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------

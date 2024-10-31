@@ -1,0 +1,10 @@
+ef rev(arr):
+    n = len(arr)
+    for i in range(n // 2):
+        # Swap elements from the start and end
+        arr[i], arr[n - i - 1] = arr[n - i - 1], arr[i]
+    return arr
+
+arr = list(map(int, input("Enter the elements of the array: ").split()))
+result = rev(arr)
+print(result)

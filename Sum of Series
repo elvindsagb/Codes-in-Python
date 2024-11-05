@@ -1,0 +1,6 @@
+def series(n):
+    num=n*(n+1)/2
+    return num
+n=int(input("Enter the number\n"))
+result=series(n)
+print(result)

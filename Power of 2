@@ -1,0 +1,6 @@
+def primeornot(n:int)->bool:
+    if (n&(n-1))==0:
+        return n
+n=int(input("enter the number to verify"))
+result=primeornot(n)
+print(result)

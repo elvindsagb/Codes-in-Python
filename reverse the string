@@ -1,0 +1,2 @@
+s=input("Enter the word\n")
+print(s[::-1])

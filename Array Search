@@ -1,0 +1,11 @@
+def match(arr,n,x):
+    for i in range(n):
+        if arr[i]==x:
+            return i
+    else:
+        return -1
+arr=list(map(int,input("Enter the array elements\n").split()))
+x=int(input("Enter the required number\n"))
+n=len(arr)
+result=match(arr,n,x)
+print(result)

@@ -1,0 +1,8 @@
+def forst(arr):
+    try:
+        return arr.index(1)
+    except ValueError:
+        return -1
+arr=list(map(int,input("Enter the array elements\n").split()))
+result=forst(arr)
+print("Transition point:",result)

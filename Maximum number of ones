@@ -1,0 +1,22 @@
+def maxones(arr):
+    x=len(arr)
+    maxyones=0
+    noones=-1
+    for i in range(x):
+        ts=sum(arr[i])
+        if ts>maxyones:
+            maxyones=ts
+            m=i
+        else:
+            return -1
+    return m
+n=int(input("Enter the number of count of arrays\n"))
+arr=[]
+for i in range(n):
+    row=list(map(int,input(f"Row {i}:").split()))
+    arr.append(row)
+result=maxones(arr)
+if result!=-1:
+    print("The array with maximum number of 1's is Row:",result)
+else:
+    print("There are no ones")

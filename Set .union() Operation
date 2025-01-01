@@ -1,0 +1,30 @@
+# Input the number of students subscribed to the English newspaper
+n = int(input())
+# Input the roll numbers of students subscribed to the English newspaper
+english_subscribers = set(map(int, input().split()))
+
+# Input the number of students subscribed to the French newspaper
+b = int(input())
+# Input the roll numbers of students subscribed to the French newspaper
+french_subscribers = set(map(int, input().split()))
+
+# Find the total number of students who have at least one subscription
+total_subscribers = english_subscribers.union(french_subscribers)
+
+# Output the total number of students
+print(len(total_subscribers))
+
+------------------------------------------------------------------------------------------------------------------
+
+
+n = int(input())
+
+english_subscribers = set(map(int, input().split()))
+
+b = int(input())
+
+french_subscribers = set(map(int, input().split()))
+
+total_subscribers = english_subscribers.union(french_subscribers)
+
+print(len(total_subscribers))
